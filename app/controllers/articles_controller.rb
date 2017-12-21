@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+    http_basic_authenticate_with name: "123456", password: "123456", except: [:index, :show]
     def edit
         @article=Article.find(params[:id])
     end
