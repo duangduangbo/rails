@@ -23,7 +23,10 @@
        <%= f.label :text %><br>
        <%= f.text_area :text %>
      </p>
-    
+    <p>
+     <%= label_tag '记住我' %>
+    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+    </p>
      <p>
        <%= f.submit %>
      </p>

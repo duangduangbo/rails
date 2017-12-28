@@ -1,1 +1,15 @@
 <h1>控制器welcome，动作index</h1>
+<h2>rails布局和视图渲染练习</h2>
+<h4>渲染其他控制器的某个动作的模板template<h4>
+<%= render template:"articles/create" %>
+<h4>render渲染html</h4>
+<%= render html: "<strong>Not Found</strong>".html_safe, :style=> "color:red"%>
+<br>
+
+    <h4>render渲染文本plain</h4>
+    <%= render plain: "<h1>plain<h1>"%>
+    <br>
+
+    <h4>render渲染原始主体body</h4>
+    <%= render body: "<h1>body<h1>"%>
+    <br>
