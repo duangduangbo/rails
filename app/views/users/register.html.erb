@@ -1,0 +1,17 @@
+<div style="text-align:center;margin-top:100px">
+<%= form_for @user do |f| %>
+<%= f.label '用户名:' %>
+<%= f.text_field :name %>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<%= f.label '密码:' %>
+<%= f.password_field :password %>
+<br>
+<%= f.label '确认密码:' %>
+<%= f.password_field :repwd %>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<%= f.label '邮箱:' %>
+<%= f.email_field :email %>
+<br>
+<%= f.submit '注册' ,style:"margin-left:120px"%>
+    <% end %>
+   </div> 
