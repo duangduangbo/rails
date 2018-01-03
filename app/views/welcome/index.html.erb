@@ -13,3 +13,60 @@
     <h4>render渲染原始主体body</h4>
     <%= render body: "<h1>body<h1>"%>
     <br>
+
+<h3>表单</h3>
+<%= form_tag({controller:"articles",action:"new"},method: "get",class:"asd") do %>
+<%= label_tag :ser, "search for:" %>
+<%= text_field_tag :ser %>
+<br>
+
+<%= check_box_tag :c_box, "dog" %>
+<%= label_tag :c_box, "choose me" %>
+<%= check_box_tag :nc_box, "cat" %>
+<%= label_tag :nc_box,"not choose me" %>
+<br>
+<%= radio_button_tag :age,"child" %>
+<%= label_tag :age_child,"child" %>
+<%= radio_button_tag :age ,"adult" %>
+<%= label_tag :age_adult,"adult" %>
+<br>
+<%= text_area_tag :message,"nice", size:"24*6" %>
+<%= password_field_tag :password %>
+<%= hidden_field_tag :parent_id ,"5" %>
+<%= search_field :user,:name %>
+<%= number_field(:product, :price, in: 1.0..20.0, step: 0.5) %>
+<%= range_field(:product, :discount, in: 1..100) %>
+<br>
+<%= select_tag :city_id,options_for_select([['请选择',0],['la',1],['lb',2]],0),{"size"=>4,multiple:true} %>
+<br>
+<%= collection_select :comments,:article_id,Article.all,:id,:title %>
+<br>
+<%= time_zone_select :comments,:time_zone %>
+<br>
+<%= select_date Date.today,prefix: :start_date %>
+<br>
+<%= select_time Date.today,prefix: :start_date %>
+<br>
+<%= select_datetime Date.today,prefix: :start_date %>
+<br>
+<%= date_select :comments,:birth_date,start_year:2010 %>
+<br>
+<%= select_year Time.now ,prefix: :input_time,field_name: :yy%>
+<br>
+<%= submit_tag "search" %>
+<% end %>
+ <%= form_tag action: :upload,multipart: true do %>
+    <%= file_field_tag 'text' %>
+    <%= submit_tag 'up'%>
+    <% end %>
+  <%= form_for @articles[0] do |f| %>
+   <%= f.file_field :picture %>
+    <% end %>  
+
+<%= form_for @articles[0], builder: LabellingFormBuilder do |f| %>
+    <%= f.text_field :first_name %>
+  <% end %>
+
+<%= form_tag 'http://www.baidu.com', authenticity_token: 'external_token' do %>
+    <%= submit_tag 'up'%>
+  <% end %>
