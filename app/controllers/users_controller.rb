@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+#   skip_before_action :require_login, only: [:new.:create,:register,:logout]
     def new
         @user=User.new
     end
@@ -11,15 +11,15 @@ class UsersController < ApplicationController
     redirect_to :root
   end
 
-    def login
-    end
     def register
-        user=User.find_by_name(params[:name])
-        if user&&user.authenticate(params[:name],params[:password])
+        
+        user=User.find_by(name: params[:name])
+       
+        if user && user.authenticate(params[params[:name],:password])
             session[:current_user_id]=user.id
              redirect_to :root 
          else 
-             render 'new'
+             render 'login'
          end
     end
     def logout

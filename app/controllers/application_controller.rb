@@ -1,6 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-private
+
+#   before_action :require_login
+# private
+# def require_login
+#   user=User.find_by_name(params[:name])
+#  unless user?
+#   flash[:error]='必须登录'
+#   redirect_to login_url
+#  end
+# end
   def current_user
     @_current_user ||=session[:current_user_id] &&
     User.find_by(id: session[:current_user_id])

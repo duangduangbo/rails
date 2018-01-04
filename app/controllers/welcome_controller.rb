@@ -1,12 +1,14 @@
 class WelcomeController < ApplicationController
+  # skip_before_action :require_login, only: [:index,:uploads]
   def index
+    
     @articles=Article.all
     # @comment=Comment.new(article_id:2)
     
     # render inline: "<% @articles.each do |p| %><p><%= p.text %></p><% end %>"
     # @json="123"
     # render json: @json
-   
+    
   end
    
 def upload
