@@ -5,6 +5,10 @@ class ArticlesController < ApplicationController
     end
     def index
         @articles = Article.all
+        article=Article.new
+        article.title='123456'
+        article.text='123456'
+        article.save
       end
     def show
         @article=Article.find(params[:id])
@@ -13,6 +17,7 @@ class ArticlesController < ApplicationController
 
     def new
         @article=Article.new
+    
     end
     def create 
         @article=Article.new(article_params)

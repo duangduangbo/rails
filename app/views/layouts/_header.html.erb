@@ -1,5 +1,7 @@
 <% if current_user %>
 <%= link_to current_user.name ,'#' %>
+<%= link_to '我的文章' ,articles_path %>
+
 <%= link_to '退出',:logout, method: 'delete'  %>
 <% else %>
 <%= link_to '登录',login_path %>
