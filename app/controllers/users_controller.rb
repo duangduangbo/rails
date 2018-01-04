@@ -14,7 +14,6 @@ class UsersController < ApplicationController
     def register
         
         user=User.find_by(name: params[:name])
-       
         if user && user.authenticate(params[:password])
             session[:current_user_id]=user.id
              redirect_to :root 
