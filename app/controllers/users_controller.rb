@@ -7,14 +7,17 @@ before_action :authenticate
     end
   def create
     @user=User.new(params_user) 
-    cookies[:current_user_id]=@user.id
+    
     if @user.save    
-    flash[:notice]="注册成功"
+    cookies[:current_user_id]=@user.id
+    puts "注册成功"
     redirect_to :root
     
     else
     puts '@user.id:'
     puts @user.id
+    binding.pry
+    @user.errors
     redirect_to new_user_url
     end
   
@@ -40,7 +43,7 @@ before_action :authenticate
     private
 
     def params_user
-        params.require(:user).permit(:name,:email)
+        params.require(:user).permit!
     end
     def authenticate
         authenticate_or_request_with_http_digest do |username|
