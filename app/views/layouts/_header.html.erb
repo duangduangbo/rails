@@ -1,9 +1,11 @@
 <%= link_to '首页',:root %>
 <% if current_user %>
+
 <%= link_to current_user.name ,'#' %>
 <%= link_to '我的文章' ,articles_path %>
 
 <%= link_to '退出',:logout, method: 'delete'  %>
+<%= link_to '删除账号',delete_user_path , method: 'delete', data: { confirm: 'Are you sure?' }  %>
 <% else %>
 <%= link_to '登录',login_path %>
 <% end %>

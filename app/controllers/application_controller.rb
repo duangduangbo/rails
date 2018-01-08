@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 #   redirect_to login_url
 #  end
 # end
+
   def current_user
     @_current_user ||=cookies[:current_user_id] &&
     User.find_by(id: cookies[:current_user_id])

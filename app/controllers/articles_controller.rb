@@ -4,15 +4,14 @@ class ArticlesController < ApplicationController
         @article=Article.find(params[:id])
     end
     def index
-        @articles = Article.all
-        article=Article.new
-        article.title='123456'
-        article.text='123456'
-        article.save
+        
+        @articles = Article.where(user_id: current_user.id)       
+        # binding.pry
+      
       end
     def show
         @article=Article.find(params[:id])
-
+        # binding.pry
     end
 
     def new
@@ -21,7 +20,11 @@ class ArticlesController < ApplicationController
     end
     def create 
         @article=Article.new(article_params)
+        @article.user_id = current_user.id
+
+        # binding.pry
         if @article.save #保存到数据库
+            # binding.pry
             redirect_to @article
         else
              render 'new'

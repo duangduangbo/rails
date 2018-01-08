@@ -4,7 +4,8 @@ class WelcomeController < ApplicationController
     
     @articles=Article.all
     # @comment=Comment.new(article_id:2)
-    
+    flash.clear
+    # binding.pry
     # render inline: "<% @articles.each do |p| %><p><%= p.text %></p><% end %>"
     # @json="123"
     # render json: @json

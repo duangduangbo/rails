@@ -16,22 +16,25 @@ before_action :authenticate
     else
     puts '@user.id:'
     puts @user.id
-    binding.pry
+    # binding.pry
     @user.errors
     redirect_to new_user_url
     end
   
   end
 
-    def register  
+    def login  
+        
         user=User.find_by(name: params[:name])
+        # binding.pry
         if user && user.authenticate(params[:password])
             cookies[:current_user_id]=user.id
-            flash[:success]="登录成功"
+            flash[:notice]="登录成功"
             puts '登陆成功'
+          
              redirect_to :root 
          else 
-            flash.now[:alert]='登录失败'
+            flash.now[:notice]='登录失败'
             puts '登陆失败'
              render 'login'
          end
@@ -40,6 +43,13 @@ before_action :authenticate
         @_current_user=cookies[:current_user_id]=nil
         redirect_to :root
     end
+    def delete_user
+        id=current_user.id
+        @user=User.find_by(id: id)
+        # binding.pry
+        @user.destroy
+        redirect_to :root
+      end
     private
 
     def params_user

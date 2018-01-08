@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
+    belongs_to :user,counter_cache: :count_of_articles
     has_many :comments,dependent: :destroy
-    belongs_to :user
+    
     validates :title,presence:true,length: {minimum: 5 }
     validates :remember_me, acceptance: true
     

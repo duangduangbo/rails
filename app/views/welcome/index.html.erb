@@ -59,14 +59,16 @@
     <%= file_field_tag 'text' %>
     <%= submit_tag 'up'%>
     <% end %>
+    <% if @article %>
   <%= form_for @articles[0] do |f| %>
    <%= f.file_field :picture %>
     <% end %>  
-
-<%= form_for @articles[0], builder: LabellingFormBuilder do |f| %>
+<% end %>
+<% if @articles[0] %>
+<%= form_for  @articles[0], builder: LabellingFormBuilder do |f| %>
     <%= f.text_field :first_name %>
   <% end %>
-
+<% end %>
 <%= form_tag 'http://www.baidu.com', authenticity_token: 'external_token' do %>
     <%= submit_tag 'up'%>
   <% end %>

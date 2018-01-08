@@ -1,11 +1,14 @@
 <div style="text-align:center;margin-top:100px">
-<%= form_tag '/register'  %>
+<%= form_tag '/log'  %>
 <%= label_tag '用户名:' %>
 <%= text_field_tag :name,params[:name] %>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;<%= label_tag '密码:' %>
 <%= password_field_tag :password,params[:password] %>
 <br>
-<%= submit_tag '登录' ,style:"margin-left:120px"%>
-    
+<%= submit_tag '登录' ,style:"margin-left:50px"%>
+<% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: name %>
+  <% end -%>
    </div> 
+   
